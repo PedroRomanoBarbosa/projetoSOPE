@@ -9,6 +9,7 @@ int main(int argc, char* args[]){
 	\*----------------------------------------*/
 	FILE* file;
 	char* c = "/words.txt";
+	char* c2 = "words.txt"; 
 	int stringLength = strlen(args[1]);
 	char filePath[stringLength];
 
@@ -18,7 +19,10 @@ int main(int argc, char* args[]){
 
 	/* check if words.txt exists and open it */
 	strcpy(filePath,args[1]);
-	strcat(filePath,c);
+	if(args[1][stringLength-1] == '/')
+		strcat(filePath,c2);
+	else
+		strcat(filePath,c);
 	printf("---> Search for words.txt in %s\n\n",filePath);
 	file = fopen(filePath,"r");
 	if(file==NULL){
